@@ -18,7 +18,7 @@ jobs:
       - name: Upload model to Azure Blob Storage
         uses: azure/CLI@v1
         with:
-          azcliversion: 2.30.0
+          azcliversion: 2.50.0
           inlineScript: |
             az storage blob upload \
               --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
