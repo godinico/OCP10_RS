@@ -1,6 +1,9 @@
 import os
 import streamlit as st
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()  # lit le .env
 
 # URL de l'Azure Function (sans la clé)
 BASE_FUNCTION_URL = "https://recommendation-function-ewcfc3cxcdhxcde2.westeurope-01.azurewebsites.net/api/recommendations"
