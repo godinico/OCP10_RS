@@ -1,2 +1,13 @@
+.env
 /env
 /news-portal-user-interactions-by-globocom
+/soutenance
+/azure_function/recommendation-function/__pycache__
+/azure_function/recommendation-function/.python_packages__
+/azure_function/recommendation-function/.venv
+/azure_function/recommendation-function/.vscode
+/azure_function/recommendation-function/local.settings.json
+/azure_function/recommendation-function/host.json
+/azure_function/recommendation-function/.funcignore
+/azure_function/recommendation-function/.gitignore
+svdpp_model.pkl

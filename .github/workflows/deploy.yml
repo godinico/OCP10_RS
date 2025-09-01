@@ -1,0 +1,39 @@
+name: Upload Model & Deploy Azure Function
+
+on:
+  push:
+    branches:
+      - main   # ou master selon ta branche principale
+
+jobs:
+  upload-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupérer le repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Étape 2 : Upload du modèle vers Azure Blob
+      - name: Upload model to Azure Blob Storage
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            az storage blob upload \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+              --container-name recommendation-models \
+              --name svdpp_model.pkl \
+              --file svdpp_model.pkl \
+              --overwrite true \
+              --auth-mode key \
+              --account-key ${{ secrets.AZURE_STORAGE_KEY }}
+
+      # Étape 3 : Déployer la Function App
+      - name: Azure Functions Action
+        uses: Azure/functions-action@v1
+        with:
+          app-name: "recommendation-function"
+          package: "azure_function/recommendation-function"
+        env:
+          AZURE_FUNCTIONAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
