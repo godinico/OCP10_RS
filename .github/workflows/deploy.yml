@@ -25,7 +25,7 @@ jobs:
               --container-name recommendation-models \
               --name svdpp_model.pkl \
               --file svdpp_model.pkl \
-              --overwrite true \
+              --overwrite \
               --auth-mode key \
               --account-key ${{ secrets.AZURE_STORAGE_KEY }}
 
