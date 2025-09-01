@@ -20,5 +20,6 @@ jobs:
         with:
           app-name: "recommendation-function"
           package: "azure_function/recommendation-function"
+          use-publish-profile: true          
         env:
           AZURE_FUNCTIONAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
