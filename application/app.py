@@ -11,6 +11,8 @@ BASE_FUNCTION_URL = "https://recommendation-function-ewcfc3cxcdhxcde2.westeurope
 # # La clé est récupérée depuis une variable d'environnement
 # FUNCTION_KEY = os.getenv("AZURE_FUNCTION_KEY")
 
+FUNCTION_KEY = st.secrets["FUNCTION_KEY"]
+
 # Construire l'URL avec la clé
 FUNCTION_URL = f"{BASE_FUNCTION_URL}?code={FUNCTION_KEY}"
 
